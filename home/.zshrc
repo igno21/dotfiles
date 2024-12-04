@@ -40,8 +40,6 @@ source /usr/share/fzf/completion.zsh
 bindkey '^H' backward-kill-word
 # Set the terminal output standard
 export LC_ALL="en_US.UTF-8"
-# Allow use of google cloud cli
-source /etc/profile.d/google-cloud-cli.sh
 # Aliases, please use sparingly and mostly only for programs that are named different than the common name on other systems
 alias hx="helix"
 
