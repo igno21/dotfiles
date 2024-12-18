@@ -22,7 +22,7 @@ plugins=(
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='hx'
 else
-  export EDITOR='code -w'
+  export EDITOR='nvim'
 fi
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
@@ -44,3 +44,9 @@ export LC_ALL="en_US.UTF-8"
 alias hx="helix"
 
 eval "$(starship init zsh)"
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+# add go bin to path
+export PATH=$PATH:$HOME/go/bin/
