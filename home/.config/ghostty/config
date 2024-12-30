@@ -1,2 +1,15 @@
-background-opacity = .7
-background-blur-radius = 20	
+fullscreen = true
+
+background-opacity = .9
+
+window-padding-y = 0,0
+
+cursor-style = block 
+
+# keybinds
+
+keybind = ctrl+h=goto_split:previous
+keybind = ctrl+l=goto_split:next
+
+keybind = ctrl+j=next_tab
+keybind = ctrl+k=previous_tab
