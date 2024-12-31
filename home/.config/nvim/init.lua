@@ -256,57 +256,33 @@ require('lazy').setup({
       harpoon:setup()
 
       -- Harpoon keymaps
-      vim.keymap.set('n', '<leader>a', function()
+      vim.keymap.set('n', '<leader>Ha', function()
         harpoon:list():add()
-      end)
-      vim.keymap.set('n', '<C-e>', function()
+      end, { desc = '[H]arpoon [A]dd' })
+      vim.keymap.set('n', '<leader>He', function()
         harpoon.ui:toggle_quick_menu(harpoon:list())
-      end)
+      end, { desc = '[H]arpoon [E]ntries' })
 
-      vim.keymap.set('n', '<C-h>', function()
+      vim.keymap.set('n', '<leader>Hh', function()
         harpoon:list():select(1)
-      end)
-      vim.keymap.set('n', '<C-t>', function()
+      end, { desc = '[H]arpoon Goto 1' })
+      vim.keymap.set('n', '<leader>Hj', function()
         harpoon:list():select(2)
-      end)
-      vim.keymap.set('n', '<C-n>', function()
+      end, { desc = '[H]arpoon Goto 2' })
+      vim.keymap.set('n', '<leader>Hk', function()
         harpoon:list():select(3)
-      end)
-      vim.keymap.set('n', '<C-s>', function()
+      end, { desc = '[H]arpoon Goto 3' })
+      vim.keymap.set('n', '<leader>Hl', function()
         harpoon:list():select(4)
-      end)
+      end, { desc = '[H]arpoon Goto 4' })
 
       -- Toggle previous & next buffers stored within Harpoon list
-      vim.keymap.set('n', '<C-S-P>', function()
+      vim.keymap.set('n', '<leader>Hp', function()
         harpoon:list():prev()
-      end)
-      vim.keymap.set('n', '<C-S-N>', function()
+      end, { desc = '[H]arpoon [P]revious' })
+      vim.keymap.set('n', '<leader>Hn', function()
         harpoon:list():next()
-      end)
-
-      --      -- basic telescope configuration
-      --      local conf = require('telescope.config').values
-      --      local function toggle_telescope(harpoon_files)
-      --        local file_paths = {}
-      --        for _, item in ipairs(harpoon_files.items) do
-      --          table.insert(file_paths, item.value)
-      --        end
-      --
-      --        require('telescope.pickers')
-      --          .new({}, {
-      --            prompt_title = 'Harpoon',
-      --            finder = require('telescope.finders').new_table {
-      --              results = file_paths,
-      --            },
-      --            previewer = conf.file_previewer {},
-      --            sorter = conf.generic_sorter {},
-      --          })
-      --          :find()
-      --      end
-      --
-      --      vim.keymap.set('n', '<C-e>', function()
-      --        toggle_telescope(harpoon:list())
-      --      end, { desc = 'Open harpoon window' })
+      end, { desc = '[H]arpoon [N]ext' })
     end,
   },
   {
@@ -422,6 +398,7 @@ require('lazy').setup({
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>H', group = '[H]arpoon', mode = { 'n' } },
       },
     },
   },
