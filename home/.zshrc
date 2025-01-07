@@ -54,3 +54,6 @@ eval "$(starship init zsh)"
 
 # add go bin to path
 export PATH=$PATH:$HOME/go/bin/
+
+# add rust bin to path
+export PATH=$PATH:$HOME/.cargo/bin
