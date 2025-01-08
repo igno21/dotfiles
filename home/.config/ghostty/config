@@ -10,6 +10,3 @@ cursor-style = block
 
 keybind = ctrl+h=goto_split:previous
 keybind = ctrl+l=goto_split:next
-
-keybind = ctrl+j=next_tab
-keybind = ctrl+k=previous_tab
