@@ -246,6 +246,7 @@ vim.opt.rtp:prepend(lazypath)
 --
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
+  'tpope/vim-fugitive',
   'ThePrimeagen/vim-be-good',
   {
     'ThePrimeagen/harpoon',
