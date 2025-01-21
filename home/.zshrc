@@ -18,12 +18,7 @@ plugins=(
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='hx'
-else
-  export EDITOR='nvim'
-fi
+export EDITOR='nvim'
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
@@ -44,8 +39,6 @@ source /usr/share/fzf/completion.zsh
 bindkey '^H' backward-kill-word
 # Set the terminal output standard
 export LC_ALL="en_US.UTF-8"
-# Aliases, please use sparingly and mostly only for programs that are named different than the common name on other systems
-alias hx="helix"
 
 eval "$(starship init zsh)"
 

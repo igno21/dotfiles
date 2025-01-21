@@ -247,7 +247,6 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   'tpope/vim-fugitive',
-  'ThePrimeagen/vim-be-good',
   {
     'ThePrimeagen/harpoon',
     branch = 'harpoon2',
@@ -257,34 +256,72 @@ require('lazy').setup({
       harpoon:setup()
 
       -- Harpoon keymaps
-      vim.keymap.set('n', '<leader>Ha', function()
+      vim.keymap.set('n', '<leader>ha', function()
         harpoon:list():add()
       end, { desc = '[H]arpoon [A]dd' })
-      vim.keymap.set('n', '<leader>He', function()
+      vim.keymap.set('n', '<leader>he', function()
         harpoon.ui:toggle_quick_menu(harpoon:list())
       end, { desc = '[H]arpoon [E]ntries' })
 
-      vim.keymap.set('n', '<leader>Hh', function()
+      vim.keymap.set('n', '<leader>hh', function()
         harpoon:list():select(1)
       end, { desc = '[H]arpoon Goto 1' })
-      vim.keymap.set('n', '<leader>Hj', function()
+      vim.keymap.set('n', '<leader>hj', function()
         harpoon:list():select(2)
       end, { desc = '[H]arpoon Goto 2' })
-      vim.keymap.set('n', '<leader>Hk', function()
+      vim.keymap.set('n', '<leader>hk', function()
         harpoon:list():select(3)
       end, { desc = '[H]arpoon Goto 3' })
-      vim.keymap.set('n', '<leader>Hl', function()
+      vim.keymap.set('n', '<leader>hl', function()
         harpoon:list():select(4)
       end, { desc = '[H]arpoon Goto 4' })
 
       -- Toggle previous & next buffers stored within Harpoon list
-      vim.keymap.set('n', '<leader>Hp', function()
+      vim.keymap.set('n', '<leader>hp', function()
         harpoon:list():prev()
       end, { desc = '[H]arpoon [P]revious' })
-      vim.keymap.set('n', '<leader>Hn', function()
+      vim.keymap.set('n', '<leader>hn', function()
         harpoon:list():next()
       end, { desc = '[H]arpoon [N]ext' })
     end,
+  },
+  {
+    'rmagatti/auto-session',
+    lazy = false,
+    keys = {
+      -- Will use Telescope if installed or a vim.ui.select picker otherwise
+      { '<leader>wr', '<cmd>SessionSearch<CR>', desc = 'Session search' },
+      { '<leader>ws', '<cmd>SessionSave<CR>', desc = 'Save session' },
+      { '<leader>wa', '<cmd>SessionToggleAutoSave<CR>', desc = 'Toggle autosave' },
+    },
+
+    ---enables autocomplete for opts
+    ---@module "auto-session"
+    ---@type AutoSession.Config
+    opts = {
+      -- ⚠️ This will only work if Telescope.nvim is installed
+      -- The following are already the default values, no need to provide them if these are already the settings you want.
+      session_lens = {
+        -- If load_on_setup is false, make sure you use `:SessionSearch` to open the picker as it will initialize everything first
+        load_on_setup = true,
+        previewer = false,
+        mappings = {
+          -- Mode can be a string or a table, e.g. {"i", "n"} for both insert and normal mode
+          delete_session = { 'i', '<C-D>' },
+          alternate_session = { 'i', '<C-S>' },
+          copy_session = { 'i', '<C-Y>' },
+        },
+        -- Can also set some Telescope picker options
+        -- For all options, see: https://github.com/nvim-telescope/telescope.nvim/blob/master/doc/telescope.txt#L112
+        theme_conf = {
+          border = true,
+          -- layout_config = {
+          --   width = 0.8, -- Can set width and height as percent of window
+          --   height = 0.5,
+          -- },
+        },
+      },
+    },
   },
   {
     {
@@ -398,8 +435,8 @@ require('lazy').setup({
         { '<leader>s', group = '[S]earch' },
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
-        { '<leader>H', group = '[H]arpoon', mode = { 'n' } },
+        { '<leader>H', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>h', group = '[H]arpoon', mode = { 'n' } },
       },
     },
   },
