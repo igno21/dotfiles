@@ -1,5 +1,17 @@
-# If you come from bash you might have to change your $PATH.
-export PATH=usr/local/lib:$PATH
+
+add_to_path() {
+  local new_path=$1
+  if ! echo "$PATH" | grep -q -E "(^|:)$new_path($|:)" ; then
+    if [ -d "$new_path" ]; then
+      export PATH=$new_path:$PATH
+    fi
+  fi
+}
+
+add_to_path "/usr/local/lib"
+add_to_path "/usr/local/bin"
+add_to_path "$HOME/go/bin/"
+add_to_path "$HOME/.cargo/bin"
 
 # Path to your oh-my-zsh installation.
 ZSH=/usr/share/oh-my-zsh/
@@ -45,8 +57,4 @@ eval "$(starship init zsh)"
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
-# add go bin to path
-export PATH=$PATH:$HOME/go/bin/
 
-# add rust bin to path
-export PATH=$PATH:$HOME/.cargo/bin
