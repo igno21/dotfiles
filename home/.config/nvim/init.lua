@@ -736,8 +736,14 @@ require('lazy').setup({
         rust_analyzer = {
           settings = {
             ['rust-analyzer'] = {
-              checkOnSave = {
+              checkOnSave = true,
+              check = {
                 command = 'clippy',
+                allTargets = true,
+                features = 'all',
+              },
+              cargo = {
+                features = 'all',
               },
             },
           },
