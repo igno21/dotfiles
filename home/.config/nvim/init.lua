@@ -222,6 +222,20 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Set noexpandtab for Makefiles
+vim.g.sleuth_make_heuristics = 0
+local makefile_group = vim.api.nvim_create_augroup('MakefileSettings', { clear = true })
+vim.api.nvim_create_autocmd('FileType', {
+  group = makefile_group,
+  pattern = 'make',
+  desc = 'Use real tabs for Makefiles',
+  -- Using a Lua callback is often more robust than a string command.
+  callback = function()
+    -- This is the Lua equivalent of `:setlocal noexpandtab`
+    vim.opt_local.expandtab = false
+  end,
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -247,6 +261,13 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   'tpope/vim-fugitive',
+  {
+    'OXY2DEV/markview.nvim',
+    lazy = false,
+
+    -- Completion for `blink.cmp`
+    -- dependencies = { "saghen/blink.cmp" },
+  },
   {
     'ThePrimeagen/harpoon',
     branch = 'harpoon2',
